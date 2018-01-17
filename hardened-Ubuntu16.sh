@@ -11,21 +11,21 @@ apt-get -o Acquire::ForceIPv4=true update
 DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::ForceIPv4=true -y upgrade
 
 # set up user 
-adduser $SSUSER --disabled-password --gecos "" && \
-echo "$SSUSER:$SSPASSWORD" | chpasswd
-adduser $SSUSER sudo
+#adduser $SSUSER --disabled-password --gecos "" && \
+#echo "$SSUSER:$SSPASSWORD" | chpasswd
+#adduser $SSUSER sudo
 
 # set up ssh pubkey
 # for x in... loop doesn't work here, sadly
-echo Setting up ssh pubkeys...
-mkdir -p /root/.ssh
-mkdir -p /home/$SSUSER/.ssh
-echo "$SSPUBKEY" > /root/.ssh/authorized_keys
-echo "$SSPUBKEY" > /home/$SSUSER/.ssh/authorized_keys
-chmod -R 700 /root/.ssh
-chmod -R 700 /home/${SSUSER}/.ssh
-chown -R ${SSUSER}:${SSUSER} /home/${SSUSER}/.ssh
-echo ...done
+#echo Setting up ssh pubkeys...
+#mkdir -p /root/.ssh
+#mkdir -p /home/$SSUSER/.ssh
+#echo "$SSPUBKEY" > /root/.ssh/authorized_keys
+#echo "$SSPUBKEY" > /home/$SSUSER/.ssh/authorized_keys
+#chmod -R 700 /root/.ssh
+#chmod -R 700 /home/${SSUSER}/.ssh
+#chown -R ${SSUSER}:${SSUSER} /home/${SSUSER}/.ssh
+#echo ...done
 
 # disable password and root over ssh
 echo Disabling passwords and root login over ssh...
